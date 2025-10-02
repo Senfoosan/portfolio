@@ -355,7 +355,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .work-card__heading {
-  color: var(#BDC3C7);
+  color: var(--text-color);
   font-size: 1.3rem;
   font-weight: 700;
   text-shadow: 1px 1px 8px rgba(0,0,0,.3);
@@ -406,14 +406,14 @@ img { max-width: 100%; height: auto; display: block; }
 
 
 /*========== MEDIA QUERIES ==========*/
-@media screen and (min-width: 576px) {
+/* @media screen and (min-width: 576px) {
     .home-container { grid-template-columns: 1fr 1fr; align-items: center; }
     .home-img { width: 280px; }
     .about-container, .skills-container, .contact-container { grid-template-columns: 1fr 1fr; }
     .about-img { width: 280px; }
     .work-container { grid-template-columns: repeat(2, 1fr); }
     .contact-form { width: 450px; justify-self: center; }
-}
+} */
 
 @media screen and (min-width: 768px) {
     .contact-form {
@@ -442,7 +442,8 @@ img { max-width: 100%; height: auto; display: block; }
 .footer-copy { font-size: var(--small-font-size); }
 
 /*========== MEDIA QUERIES ==========*/
-@media screen and (min-width: 576px) {
+@media screen and (max-width: 576px) {
+    .nav-list{ flex-direction: column; }
     .home-data, .about-container, .skills-container { text-align: initial; }
     .home-container { height: 100vh; grid-template-columns: repeat(2, 1fr); align-items: center; }
     .home-img { width: 280px; }
