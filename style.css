@@ -119,7 +119,8 @@ img { max-width: 100%; height: auto; display: block; }
     gap: var(--mb-2);
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1023px) {
+    .nav-toggle { display: block; }
     .nav-menu {
         position: fixed;
         top: var(--header-height);
@@ -135,7 +136,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 /* Menu burger caché en desktop */
 @media screen and (min-width: 1024px) {
-    .nav-toggle { display: none; }
+    .nav-toggle { display: none !important; }
     .nav-menu {
         position: static;
         width: auto;
@@ -143,10 +144,15 @@ img { max-width: 100%; height: auto; display: block; }
         background: none;
         box-shadow: none;
         display: flex;
-        justify-content: column;
+        justify-content: center;
         align-items: center;
     }
-    .nav-item { margin: 0 var(--mb-2); }
+    .nav-list {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    .nav-item { margin: 0 var(--mb-2); margin-bottom: 0; }
 }
 
 .nav-item { margin-bottom: var(--mb-4); }
@@ -162,6 +168,19 @@ img { max-width: 100%; height: auto; display: block; }
 
 /* show menu */
 .show-menu { right: 0; }
+
+/* Navigation en colonne quand le menu mobile est ouvert */
+.show-menu .nav-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.show-menu .nav-item {
+    margin-bottom: var(--mb-4);
+    width: 100%;
+}
 
 /* Active menu */
 .active::after {
@@ -188,7 +207,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 /*===== HOME =====*/
 .home {
-    padding-bottom: 16rem;
+    padding-bottom: inherit;
 }
 .home-container {
     display: grid;
@@ -404,24 +423,6 @@ img { max-width: 100%; height: auto; display: block; }
   justify-self: center; /* centre le bouton */
 }
 
-
-/*========== MEDIA QUERIES ==========*/
-/* @media screen and (min-width: 576px) {
-    .home-container { grid-template-columns: 1fr 1fr; align-items: center; }
-    .home-img { width: 280px; }
-    .about-container, .skills-container, .contact-container { grid-template-columns: 1fr 1fr; }
-    .about-img { width: 280px; }
-    .work-container { grid-template-columns: repeat(2, 1fr); }
-    .contact-form { width: 450px; justify-self: center; }
-} */
-
-@media screen and (min-width: 768px) {
-    .contact-form {
-        grid-template-columns: 1fr 1fr;
-    }
-    .contact-input:nth-child(3) { grid-column: span 2; }
-}
-
 /*===== FOOTER =====*/
 .footer {
     background-color: var(--footer-bg-color);
@@ -432,24 +433,24 @@ img { max-width: 100%; height: auto; display: block; }
 .footer-title { font-size: var(--h1-font-size); color: var(--title-color); margin-bottom: var(--mb-1); }
 .footer-description { margin-bottom: var(--mb-3); }
 .footer-social { margin-bottom: var(--mb-3); }
-.footer-link {
-    font-size: 1.4rem;
-    color: var(--title-color);
-    margin: 0 var(--mb-1);
-    transition: .3s;
-}
+.footer-link { font-size: 1.4rem; color: var(--title-color);margin: 0 var(--mb-1); transition: .3s;}
 .footer-link:hover { color: var(--first-color); }
 .footer-copy { font-size: var(--small-font-size); }
 
 /*========== MEDIA QUERIES ==========*/
-@media screen and (max-width: 576px) {
-    .nav-list{ flex-direction: column; }
-    .home-data, .about-container, .skills-container { text-align: initial; }
-    .home-container { height: 100vh; grid-template-columns: repeat(2, 1fr); align-items: center; }
+@media screen and (min-width: 575px) {
+    .work-card {margin-left: 1rem; margin-right: 1rem;}
+    .home { padding-bottom: inherit; }
+    .nav-menu { display: flex; align-items: center; }
+    .home-container { grid-template-columns: 1fr 1fr; align-items: center; }
     .home-img { width: 280px; }
-    .home-data { text-align: initial; }
-    .about-container, .skills-container, .contact-container { grid-template-columns: repeat(2, 1fr); }
+    .about-container, .skills-container, .contact-container { grid-template-columns: 1fr 1fr; }
     .about-img { width: 280px; }
     .work-container { grid-template-columns: repeat(2, 1fr); }
     .contact-form { width: 450px; justify-self: center; }
+}
+
+@media screen and (min-width: 768px) {
+    .contact-form {grid-template-columns: 1fr 1fr;}
+    .contact-input:nth-child(3) { grid-column: span 2; }
 }
